@@ -213,8 +213,34 @@
           1,
           null
         ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/app/controllers/api/v1/subscriptions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/app/serializers/subscription_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1698700616
+    "timestamp": 1698702789
   }
 }

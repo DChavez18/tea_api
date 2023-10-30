@@ -14,30 +14,24 @@ RSpec.describe "Get all subscriptions for a customer", type: :request do
       expect(response).to be_successful
       expect(response.status).to eq(200)
 
-      subscriptions = JSON.parse(response.body, symbolize_names: true)
+      response_json = JSON.parse(response.body, symbolize_names: true)
+require 'pry'; binding.pry
+      expect(response_json).to be_a(Hash)
+      expect(response_json).to have_key(:data)
 
-      expect(subscriptions).to be_a(Hash)
-      expect(subscriptions).to have_key(:data)
-      expect(subscriptions[:data]).to be_an(Array)
-      expect(subscriptions[:data].count).to eq(2)
-      expect(subscriptions[:data][0]).to have_key(:id)
-      expect(subscriptions[:data][0][:id]).to be_a(String)
-      expect(subscriptions[:data][0]).to have_key(:type)
-      expect(subscriptions[:data][0][:type]).to be_a(String)
-      expect(subscriptions[:data][0]).to have_key(:attributes)
-      expect(subscriptions[:data][0][:attributes]).to be_a(Hash)
-      expect(subscriptions[:data][0][:attributes]).to have_key(:title)
-      expect(subscriptions[:data][0][:attributes][:title]).to be_a(String)
-      expect(subscriptions[:data][0][:attributes]).to have_key(:price)
-      expect(subscriptions[:data][0][:attributes][:price]).to be_a(Float)
-      expect(subscriptions[:data][0][:attributes]).to have_key(:status)
-      expect(subscriptions[:data][0][:attributes][:status]).to be_a(Integer)
-      expect(subscriptions[:data][0][:attributes]).to have_key(:frequency)
-      expect(subscriptions[:data][0][:attributes][:frequency]).to be_a(Integer)
-      expect(subscriptions[:data][0][:attributes]).to have_key(:customer_id)
-      expect(subscriptions[:data][0][:attributes][:customer_id]).to be_a(Integer)
-      expect(subscriptions[:data][0][:attributes]).to have_key(:tea_id)
-      expect(subscriptions[:data][0][:attributes][:tea_id]).to be_a(Integer)
+      data = response_json[:data]
+      expect(data).to be_an(Array)
+      expect(data.count).to eq(2)
+      expect(data[0]).to have_key(:id)
+      expect(data[0]).to have_key(:type)
+      expect(data[0][:type]).to eq("subscription")
+      expect(data[0]).to have_key(:attributes)
+      expect(data[0][:attributes]).to be_a(Hash)
+
+      expect(data[0][:attributes][:title]).to eq("Earl Grey")
+      expect(data[0][:attributes][:price]).to eq(10.00)
+      expect(data[0][:attributes][:status]).to eq(0)
+      expect(data[0][:attributes][:frequency]).to eq(1)
     end
   end
 end
