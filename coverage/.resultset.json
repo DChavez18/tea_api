@@ -198,45 +198,20 @@
           null
         ]
       },
-      "/Users/derekchavez/4mod/projects/tea_api/app/models/tea.rb": {
+      "/Users/derekchavez/4mod/projects/tea_api/spec/models/subscription_spec.rb": {
         "lines": [
           1,
+          null,
           1,
           1,
-          null
-        ]
-      },
-      "/Users/derekchavez/4mod/projects/tea_api/app/controllers/api/v1/subscriptions_controller.rb": {
-        "lines": [
-          1,
-          1,
-          0,
-          0,
-          0,
+          2,
+          2,
           null,
           null,
           1,
           2,
           2,
           null,
-          2,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/derekchavez/4mod/projects/tea_api/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
           null
         ]
       },
@@ -258,6 +233,190 @@
           null
         ]
       },
+      "/Users/derekchavez/4mod/projects/tea_api/spec/models/tea_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/app/models/tea.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/spec/requests/api/v1/customers/get_all_subscriptions_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/spec/requests/api/v1/subscriptions/create_subscription_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/app/controllers/api/v1/subscriptions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          2,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/derekchavez/4mod/projects/tea_api/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/Users/derekchavez/4mod/projects/tea_api/app/serializers/subscription_serializer.rb": {
         "lines": [
           1,
@@ -268,6 +427,6 @@
         ]
       }
     },
-    "timestamp": 1698767677
+    "timestamp": 1698768249
   }
 }

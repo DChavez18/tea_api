@@ -1,4 +1,6 @@
 class Api::V1::SubscriptionsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  
   def index
     customer = Customer.find(params[:customer_id])
     subscriptions = customer.subscriptions
@@ -20,5 +22,9 @@ class Api::V1::SubscriptionsController < ApplicationController
 
   def subscription_params
     params.permit(:title, :price, :status, :frequency, :tea_id, :customer_id)
+  end
+
+  def record_not_found
+    render json: { error: "Customer not found" }, status: 404
   end
 end

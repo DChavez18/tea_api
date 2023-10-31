@@ -6,8 +6,8 @@ RSpec.describe "Get all subscriptions for a customer", type: :request do
       customer = Customer.create!(first_name: "Bob", last_name: "Gu", email: "bg@gmail.com", address: "1234 Rails St")
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
-      subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: 0, frequency: 1, customer_id: customer.id, tea_id: tea.id)
-      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: 1, frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+      subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
 
       get "/api/v1/customers/#{customer.id}/subscriptions"
 
@@ -34,6 +34,26 @@ RSpec.describe "Get all subscriptions for a customer", type: :request do
       expect(data[0][:attributes][:frequency]).to eq("monthly")
       expect(data[0][:attributes][:tea_id]).to eq(tea.id)
       expect(data[0][:attributes][:customer_id]).to eq(customer.id)
+    end
+  end
+
+  describe "sad path" do
+    it "returns an error if the customer does not exist" do
+      customer = Customer.create!(first_name: "Bob", last_name: "Gu", email: "bg@gmail.com", address: "1234 Rails St")
+      tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
+      tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
+      subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+
+      get "/api/v1/customers/1/subscriptions"
+
+      expect(response.status).to eq(404)
+
+      response_json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_json).to be_a(Hash)
+      expect(response_json).to have_key(:error)
+      expect(response_json[:error]).to eq("Customer not found")
     end
   end
 end
