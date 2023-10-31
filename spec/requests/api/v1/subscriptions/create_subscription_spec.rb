@@ -7,7 +7,7 @@ RSpec.describe "Create a subscription for a customer", type: :request do
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
 
-      post "/api/v1/customers/#{customer.id}/subscriptions", params: {valid_subscription: {title: "Morning Time", price: 15.99, status: "active", frequency: "weekly", customer_id: customer.id, tea_id: tea.id}}
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {title: "Morning Time", price: 15.99, status: "active", frequency: "weekly", customer_id: customer.id, tea_id: tea.id}
 
       expect(response).to be_successful
 
@@ -33,6 +33,16 @@ RSpec.describe "Create a subscription for a customer", type: :request do
       expect(data[:attributes][:customer_id]).to eq(customer.id)
 
       expect(Subscription.last.title).to eq("Morning Time")
+    end
+  end
+
+  describe "sad path" do
+    it "returns an error if a required field is missing" do
+      customer = Customer.create!(first_name: "Bob", last_name: "Gu", email: "bg@gmail.com", address: "1234 Rails St")
+      tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
+      tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
+      
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: {valid_subscription: {title: "Morning Time", price: 15.99, status: "active", frequency: "weekly", customer_id: customer.id}}
     end
   end
 end
