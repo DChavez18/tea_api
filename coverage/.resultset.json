@@ -317,6 +317,51 @@
           null
         ]
       },
+      "/Users/derekchavez/4mod/projects/tea_api/spec/requests/api/v1/subscriptions/cancel_subscription_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/derekchavez/4mod/projects/tea_api/spec/requests/api/v1/subscriptions/create_subscription_spec.rb": {
         "lines": [
           1,
@@ -427,6 +472,6 @@
         ]
       }
     },
-    "timestamp": 1698768249
+    "timestamp": 1698768553
   }
 }
