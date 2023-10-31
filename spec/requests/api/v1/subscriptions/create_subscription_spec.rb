@@ -41,8 +41,16 @@ RSpec.describe "Create a subscription for a customer", type: :request do
       customer = Customer.create!(first_name: "Bob", last_name: "Gu", email: "bg@gmail.com", address: "1234 Rails St")
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
-      
-      post "/api/v1/customers/#{customer.id}/subscriptions", params: {valid_subscription: {title: "Morning Time", price: 15.99, status: "active", frequency: "weekly", customer_id: customer.id}}
+  
+      post "/api/v1/customers/#{customer.id}/subscriptions", params: { title: "Morning Time", price: 15.99, status: "", frequency: "weekly", customer_id: customer.id, tea_id: tea.id }
+  
+      expect(response.status).to eq(400)
+  
+      response_json = JSON.parse(response.body, symbolize_names: true)
+  
+      expect(response_json).to be_a(Hash)
+      expect(response_json).to have_key(:error)
+      expect(response_json[:error]).to eq("Status can't be blank and Status is not included in the list")
     end
   end
 end
