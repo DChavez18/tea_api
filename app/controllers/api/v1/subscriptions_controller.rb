@@ -1,6 +1,6 @@
 class Api::V1::SubscriptionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  
+
   def index
     customer = Customer.find(params[:customer_id])
     subscriptions = customer.subscriptions
@@ -18,6 +18,13 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
   end
 
+  def cancel
+    customer = Customer.find(params[:customer_id])
+    subscription = customer.subscriptions.find(params[:id])
+    subscription.update(status: "cancelled")
+    render json: SubscriptionSerializer.new(subscription)
+  end
+
   private
 
   def subscription_params
@@ -25,6 +32,6 @@ class Api::V1::SubscriptionsController < ApplicationController
   end
 
   def record_not_found
-    render json: { error: "Customer not found" }, status: 404
+    render json: { error: "Record not found" }, status: 404
   end
 end

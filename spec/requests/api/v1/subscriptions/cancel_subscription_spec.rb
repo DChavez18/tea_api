@@ -9,7 +9,7 @@ RSpec.describe "Cancel a subscription", type: :request do
       subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
       subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
 
-      patch "/api/v1/subscriptions/#{subscription.id}/cancel"
+      patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}/cancel"
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
@@ -36,6 +36,26 @@ RSpec.describe "Cancel a subscription", type: :request do
       expect(data[:attributes][:customer_id]).to eq(customer.id)
 
       expect(Subscription.last.status).to eq("cancelled")
+    end
+  end
+
+  describe "sad path" do
+    it "returns an error if the subscription does not exist" do
+      customer = Customer.create!(first_name: "Bob", last_name: "Gu", email: "bg@gmail.com", address: "1234 Rails St")
+      tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
+      tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
+      subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+
+      patch "/api/v1/customers/#{customer.id}/subscriptions/404/cancel"
+
+      expect(response.status).to eq(404)
+
+      response_json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_json).to be_a(Hash)
+      expect(response_json).to have_key(:error)
+      expect(response_json[:error]).to eq("Record not found")
     end
   end
 end
