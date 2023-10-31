@@ -1,11 +1,20 @@
 # Tea Subscription API
 
-## API Use cases
-This API allows customers to manage their tea subcriptions and access tea subscription information by:
+## About the API
 
-- subscribing
-- cancelling subscriptions
-- viewing all active/cancelled subscriptions
+Welcome to the Tea Subscription API, a simple yet powerful Rails API built to manage tea subscriptions for customers. Whether you're a tea enthusiast or a developer exploring this service, here's what you can expect:
+
+### Key Features:
+
+- **Subscription Management:** You can easily subscribe customers to tea subscriptions, helping them enjoy their favorite blends hassle-free.
+
+- **Cancellation Made Easy:** We provide an endpoint for canceling tea subscriptions, ensuring flexibility and convenience for customers.
+
+- **Comprehensive Subscription Overview:** With our service, customers can view all their subscriptions, both active and canceled, in one place.
+
+### Why This Matters:
+
+Our API is designed to demonstrate strong proficiency in Rails development, emphasizing RESTful routes and organized code following object-oriented programming principles. We've also prioritized Test Driven Development (TDD) to ensure the robustness of our service. Clear and concise documentation is provided for ease of use.
 
 ## Runs With
 - Rails 7.0.6
@@ -113,4 +122,9 @@ Run rails db:{create,migrate,seed}
 
 ![Database Structure](https://github.com/DChavez18/tea_api/blob/main/Tea%20Subscription%20Schema.png)
 
+## Project Board
+[Figma](https://www.figma.com/file/iAx6SOQy8G1eciIMdKvOOE/Untitled?type=design&node-id=0-1&mode=design&t=QOc3SpX0OBZMYHXE-0)
 
+## Contact
+
+Derek Chavez [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) ](https://github.com/DChavez18) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white) ](https://www.linkedin.com/in/derek-chavez/)
