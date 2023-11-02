@@ -52,8 +52,8 @@ RSpec.describe "Get all subscriptions for a customer", type: :request do
       response_json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_json).to be_a(Hash)
-      expect(response_json).to have_key(:error)
-      expect(response_json[:error]).to eq("Record not found")
+      expect(response_json).to have_key(:errors)
+      expect(response_json[:errors][0][:detail]).to eq("Record not found")
     end
   end
 end

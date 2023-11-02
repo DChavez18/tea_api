@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-02T09:51:33-06:00">2023-11-02T09:51:33-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-02T11:36:06-06:00">2023-11-02T11:36:06-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.06
+         1.1
        </span>
     </span> hits/line
     )
@@ -39,12 +39,12 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>20</b> files in total.
+    <b>21</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>216</b> relevant lines,
-    <span class="green"><b>216</b> lines covered</span> and
+    <b>220</b> relevant lines,
+    <span class="green"><b>220</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -133,6 +133,17 @@
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#e03c8bcda5f48ce638fef7605cbe16e2d2067d85" class="src_link" title="app/serializers/error_serializer.rb">app/serializers/error_serializer.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">2.75</td>
             
           </tr>
         
@@ -494,7 +505,7 @@
 
             
 
-            <code class="ruby">      render json: SubscriptionSerializer.new(subscription), status: 201</code>
+            <code class="ruby">      render json: SubscriptionSerializer.new(subscription), status: :created</code>
           </li>
         </div>
       
@@ -516,7 +527,7 @@
 
             
 
-            <code class="ruby">      render json: { error: subscription.errors.full_messages.to_sentence }, status: 400</code>
+            <code class="ruby">      render json: ErrorSerializer.serialize(subscription.errors.full_messages.to_sentence), status: :bad_request</code>
           </li>
         </div>
       
@@ -714,7 +725,7 @@
 
             
 
-            <code class="ruby">    render json: { error: &quot;Record not found&quot; }, status: 404</code>
+            <code class="ruby">    render json: ErrorSerializer.serialize(&quot;Record not found&quot;), status: :not_found</code>
           </li>
         </div>
       
@@ -1183,6 +1194,136 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="e03c8bcda5f48ce638fef7605cbe16e2d2067d85">
+  <div class="header">
+    <h3>app/serializers/error_serializer.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>4</b> relevant lines.
+      <span class="green"><b>4</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class ErrorSerializer</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def self.serialize(errors)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="3">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">    errors_hash = errors.is_a?(String) ? [{detail: errors}] : errors</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">    {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="6">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">      errors: errors_hash.map { |error| { detail: error[:detail] } }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">    }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
@@ -4145,7 +4286,7 @@
 
             
 
-            <code class="ruby">      expect(response_json).to have_key(:error)</code>
+            <code class="ruby">      expect(response_json).to have_key(:errors)</code>
           </li>
         </div>
       
@@ -4156,7 +4297,7 @@
 
             
 
-            <code class="ruby">      expect(response_json[:error]).to eq(&quot;Record not found&quot;)</code>
+            <code class="ruby">      expect(response_json[:errors][0][:detail]).to eq(&quot;Record not found&quot;)</code>
           </li>
         </div>
       
@@ -4858,7 +4999,7 @@
 
             
 
-            <code class="ruby">      expect(response_json).to have_key(:error)</code>
+            <code class="ruby">      expect(response_json).to have_key(:errors)</code>
           </li>
         </div>
       
@@ -4869,7 +5010,7 @@
 
             
 
-            <code class="ruby">      expect(response_json[:error]).to eq(&quot;Record not found&quot;)</code>
+            <code class="ruby">      expect(response_json[:errors][0][:detail]).to eq(&quot;Record not found&quot;)</code>
           </li>
         </div>
       
@@ -5505,7 +5646,7 @@
 
             
 
-            <code class="ruby">      expect(response_json).to have_key(:error)</code>
+            <code class="ruby">      expect(response_json).to have_key(:errors)</code>
           </li>
         </div>
       
@@ -5516,7 +5657,7 @@
 
             
 
-            <code class="ruby">      expect(response_json[:error]).to eq(&quot;Status can&#39;t be blank and Status is not included in the list&quot;)</code>
+            <code class="ruby">      expect(response_json[:errors][0][:detail]).to eq(&quot;Status can&#39;t be blank and Status is not included in the list&quot;)</code>
           </li>
         </div>
       

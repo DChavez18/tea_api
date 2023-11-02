@@ -12,9 +12,9 @@ class Api::V1::SubscriptionsController < ApplicationController
     subscription = customer.subscriptions.build(subscription_params)
 
     if subscription.save
-      render json: SubscriptionSerializer.new(subscription), status: 201
+      render json: SubscriptionSerializer.new(subscription), status: :created
     else
-      render json: { error: subscription.errors.full_messages.to_sentence }, status: 400
+      render json: ErrorSerializer.serialize(subscription.errors.full_messages.to_sentence), status: :bad_request
     end
   end
 
@@ -32,6 +32,6 @@ class Api::V1::SubscriptionsController < ApplicationController
   end
 
   def record_not_found
-    render json: { error: "Record not found" }, status: 404
+    render json: ErrorSerializer.serialize("Record not found"), status: :not_found
   end
 end
