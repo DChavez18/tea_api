@@ -4,11 +4,11 @@ class Subscription < ApplicationRecord
 
   validates :title, presence: true
   validates :price, presence: true
-  validates :status, presence: true, inclusion: { in: ['active', 'cancelled'] }
+  validates :status, presence: true, inclusion: { in: ['active', 'canceled'] }
   validates :frequency, presence: true
   validates :tea_id, presence: true
   validates :customer_id, presence: true
 
-  enum status: [:active, :cancelled]
+  enum status: [:active, :canceled]
   enum frequency: [:weekly, :monthly]
 end

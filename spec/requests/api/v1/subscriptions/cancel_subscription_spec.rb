@@ -7,7 +7,7 @@ RSpec.describe "Cancel a subscription", type: :request do
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
       subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
-      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "canceled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
 
       patch "/api/v1/customers/#{customer.id}/subscriptions/#{subscription.id}/cancel"
 
@@ -30,12 +30,12 @@ RSpec.describe "Cancel a subscription", type: :request do
 
       expect(data[:attributes][:title]).to eq("Earl Grey")
       expect(data[:attributes][:price]).to eq(10.00)
-      expect(data[:attributes][:status]).to eq("cancelled")
+      expect(data[:attributes][:status]).to eq("canceled")
       expect(data[:attributes][:frequency]).to eq("monthly")
       expect(data[:attributes][:tea_id]).to eq(tea.id)
       expect(data[:attributes][:customer_id]).to eq(customer.id)
 
-      expect(Subscription.last.status).to eq("cancelled")
+      expect(Subscription.last.status).to eq("canceled")
     end
   end
 
@@ -45,7 +45,7 @@ RSpec.describe "Cancel a subscription", type: :request do
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
       subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
-      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "canceled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
 
       patch "/api/v1/customers/#{customer.id}/subscriptions/404/cancel"
 

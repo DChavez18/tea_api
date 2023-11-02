@@ -7,7 +7,7 @@ RSpec.describe "Get all subscriptions for a customer", type: :request do
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
       subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
-      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "canceled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
 
       get "/api/v1/customers/#{customer.id}/subscriptions"
 
@@ -43,7 +43,7 @@ RSpec.describe "Get all subscriptions for a customer", type: :request do
       tea = Tea.create!(title: "Earl Grey", description: "Tea", temp: 200, brew_time: 5)
       tea2 = Tea.create!(title: "Green Tea", description: "Tea", temp: 201, brew_time: 4)
       subscription = Subscription.create!(title: "Earl Grey", price: 10.00, status: "active", frequency: 1, customer_id: customer.id, tea_id: tea.id)
-      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "cancelled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
+      subscription2 = Subscription.create!(title: "Green Tea", price: 10.00, status: "canceled", frequency: 1, customer_id: customer.id, tea_id: tea2.id)
 
       get "/api/v1/customers/1/subscriptions"
 

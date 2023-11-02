@@ -58,7 +58,7 @@ Run rails db:{create,migrate,seed}
       "attributes": {
         "title": "Green Tea",
         "price": 10.0,
-        "status": "cancelled",
+        "status": "canceled",
         "frequency": "monthly",
         "tea_id": 2,
         "customer_id": 1
@@ -109,7 +109,7 @@ Run rails db:{create,migrate,seed}
     "attributes": {
       "title": "Earl Grey",
       "price": 10.0,
-      "status": "cancelled",
+      "status": "canceled",
       "frequency": "monthly",
       "tea_id": 1,
       "customer_id": 1
